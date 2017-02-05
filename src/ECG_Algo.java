@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class ECG_Algo {
 	static float highestMax=0, peak, max=0, prev =0, beforePrev = 0;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		ArrayList<String> data_list = readCSVToArrayList("C:\\Users\\Amrane Ait Zeouay\\Documents\\workspace-sts-3.6.4.RELEASE\\Algo\\src\\test.csv");
 
@@ -19,12 +19,18 @@ public class ECG_Algo {
 		}
 		//for(int k=0;k<30; k++){
 			//System.out.println(" k "+k);
-			for(int i=0; i<ecg.length;i++){
-				//long startTime = System.nanoTime();
-				TestECG.detectEcgTest(ecg[i]);
-				//long endTime = System.nanoTime();
-				//System.out.println("Took "+(endTime - startTime) + " ns");
-			}	
+		//TestECG testEcg = new TestECG();
+		long startTime = System.nanoTime();
+		for(int i=0; i<ecg.length;i++){
+			TestECG.detectEcgTest(ecg[i]);
+		}
+		
+		/*for(int i=0; i<10000000;i++){
+			TestECG.detectEcgTest(ecg[i]);
+			}*/
+		
+		long endTime = System.nanoTime();
+		System.out.println("Took "+(endTime - startTime) + " ns");
 		//}
 	}
 
